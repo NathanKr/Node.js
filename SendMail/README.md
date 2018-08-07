@@ -2,7 +2,7 @@
 
 
 <h3>Points of interest</h3>
-<li>The sample is working but for some reasons mail are sent to email spam directory on</li>
+<li>The sample is working but for some reasons mail are sent to the email spam directory</li>
 
 
 <h3>Installation</h3>
