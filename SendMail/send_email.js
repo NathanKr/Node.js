@@ -6,4 +6,5 @@ const msg = {
   subject: 'Meeting ',
   text: 'Hi Nathan  easy to do anywhere, even with Node.js Nathan'
 };
-sgMail.send(msg);
+
+  sgMail.send(msg);
