@@ -5,6 +5,7 @@ function max(a, b) {
 // --- export the function max as max
 exports.max = max;
 
+const text2 = 'this cannot be used outside this module';
 const text = 'hello world';
 
 // --- export the variable text as t1
