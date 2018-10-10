@@ -1,15 +1,15 @@
-var http = require('http');
-var dev = require('./dev');
+const mongo = require("mongodb");
+const dev = require("./dev");
 
-console.log('open the browser at localhost:\8080');
-console.log(dev.dbAdminPassword);
+const mongoClient = mongo.MongoClient;
+const connectHandler = (err, db) => {
+  if (err) throw err;
+  console.log("Database connect ok !");
+  db.close();
+};
 
-
-const requestHandler = (request, response) => {
-    response.writeHead(200, {'Content-Type': 'text/html'});
-    response.write('Hello Node.js!');
-    response.end();
-} 
-
-http.createServer(requestHandler).listen(8080);
-
+mongoClient.connect(
+  dev.mongoDbUri,
+  { useNewUrlParser: true },
+  connectHandler
+);
