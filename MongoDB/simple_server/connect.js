@@ -4,12 +4,12 @@ const dev = require("./dev");
 const mongoClient = mongo.MongoClient;
 const connectHandler = (err, db) => {
   if (err) throw err;
-  console.log("Database connect ok !");
+  console.log("Database connect ok !"); // --- ok if database is all ready created e.g. in mlab
   db.close();
 };
 
 mongoClient.connect(
-  dev.mongoDbUri,
+  dev.mongoDbUrl,
   { useNewUrlParser: true },
   connectHandler
 );
