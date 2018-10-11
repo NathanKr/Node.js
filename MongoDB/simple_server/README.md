@@ -33,7 +33,7 @@ Simple node.js which access mongeDB
   </tr>
 </table>
 
-invoke operation by doing in cmd :  node <file name>
+invoke operation by doing in cmd :  node <file_name>
 
 <h2>Points of interests</h2>
 <ul>
