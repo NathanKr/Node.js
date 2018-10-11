@@ -10,9 +10,9 @@ const connectHandler = (err, db) => {
   const dbObject = db.db(dev.dbName);
   const userCollection = dbObject.collection(constants.usersCollection);
   const query = { id: 1 };
-  userCollection.findOne(query, (err, result) => {
+  userCollection.deleteOne(query, (err, result) => {
     if (err) throw err;
-    console.log(result);
+    console.log("one document was deleted");
   });
 
   db.close();
