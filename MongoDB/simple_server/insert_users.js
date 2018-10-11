@@ -4,19 +4,25 @@ const constants = require("./constants");
 
 const mongoClient = mongo.MongoClient;
 
-const insertHandler = (err,res) => {
-    if (err) throw err;
+const insertUserHandler = (err, res) => {
+  if (err) throw err;
 
-    console.log('insert document is success');
-}
+  console.log(res);
+};
 
 const connectHandler = (err, db) => {
   if (err) throw err;
 
   const dbObject = db.db(dev.dbName);
   const userCollection = dbObject.collection(constants.usersCollection);
-    userCollection.insertOne({id:1 , name : 'Nathan' , age : 55}, insertHandler);
-    userCollection.insertOne({id:2 , name : 'Nitzan' , age : 27}, insertHandler);
+  userCollection.insertOne(
+    { id: 1, name: "Nathan", age: 55 },
+    insertUserHandler
+  );
+  userCollection.insertOne(
+    { id: 2, name: "Nitzan", age: 27 },
+    insertUserHandler
+  );
   db.close();
 };
 
