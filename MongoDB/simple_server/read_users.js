@@ -4,20 +4,21 @@ const constants = require("./constants");
 
 const mongoClient = mongo.MongoClient;
 
-
 const connectHandler = (err, db) => {
   if (err) throw err;
 
   const dbObject = db.db(dev.dbName);
   const userCollection = dbObject.collection(constants.usersCollection);
-  const cursor = userCollection.find({});
-  console.log(`documents from collection : ${constants.usersCollection}`);
-  cursor.forEach(elem => {
-    console.log(elem)
+  userCollection.find({}, (err, cursor) => {
+    if (err) throw err;
+    console.log(`documents from collection : ${constants.usersCollection}`);
+    cursor.forEach(elem => {
+      console.log(elem);
+    });
   });
 
   db.close();
-};  
+};
 
 mongoClient.connect(
   dev.mongoDbUrl,
