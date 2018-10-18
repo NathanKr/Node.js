@@ -1,3 +1,2 @@
-const usersCollection = 'users';
-
-exports.usersCollection = usersCollection;
+exports.usersCollection = 'users';
+exports.booksCollection = 'books';
