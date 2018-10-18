@@ -1,5 +1,5 @@
 var http = require('http');
-console.log('open the browser at localhost:\8080')
+console.log('open the browser at localhost:\8080');
 
 const requestHandler = (request, response) => {
     response.writeHead(200, {'Content-Type': 'text/html'});
