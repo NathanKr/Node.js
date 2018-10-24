@@ -5,7 +5,8 @@ console.log("send post\\put\\patch request and put info in body !!!!");
 
 http
   .createServer((request, response) => {
-    const { headers, method, url } = request;
+    const { headers, method, url } = request; 
+    console.log(url,'\n',method,'\n',headers);
     response.writeHead(200, { "Content-Type": "application/json" });
     let body = [];
     request
