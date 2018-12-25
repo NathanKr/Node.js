@@ -8,4 +8,4 @@ This is notes app implemented by me
 <li>--body : relevant to add</li>
 </ul>
 
-for example : node app.js --mode remove title t1
+for example : node app.js --mode remove --title t1
