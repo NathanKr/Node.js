@@ -15,7 +15,7 @@ const saveNotes = notes => {
 const getNotes = () => {
   var notes;
 
-  // --- try handles e.g. the first time when no file exists
+  // --- try handles e.g. the first time when no file exists or format issues in the file
   try {
     const notesString = fs.readFileSync(fileName);
     notes = JSON.parse(notesString);
@@ -58,7 +58,7 @@ const removeNote = title => {
     saveNotes(notes);
   } else {
     console.log("note does not exist");
-  }
+  } 
 };
 
 const getAllNotes = () => {

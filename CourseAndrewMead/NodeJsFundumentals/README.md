@@ -9,3 +9,9 @@ This is notes app implemented by me
 </ul>
 
 for example : node app.js --mode remove --title t1
+
+
+<h2>Points of interests</h2>
+<ul>
+<li>notes design should change in case it is used by few modules</li>
+</ul>
