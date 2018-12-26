@@ -5,6 +5,8 @@ This is notes app implemented by me
 <h2>Points of interests</h2>
 <ul>
 <li>This app is doing CRUD which is very common used</li>
+<li>Notes are saved on a file</li>
+<li>Note properties are : title , body</li>
 <li>notes.js is designed as general purpose - no console log inside it</li>
 <li>Usage is provided by invoking : node app.js</li>
 </ul>
