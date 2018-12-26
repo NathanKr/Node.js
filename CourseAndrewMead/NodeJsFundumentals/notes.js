@@ -1,4 +1,4 @@
-console.log("notes is loading");
+//console.log("notes is loading");
 
 const fs = require("fs");
 const fileName = "notes.json";
@@ -35,20 +35,33 @@ const addNote = (title, body) => {
     // --- note title does not exist
     notes.push(note);
     saveNotes(notes);
-  } else {
-    console.log("note all ready exist");
+    return true;
   }
+  
+  return false;
 };
 
 const getNote = title => {
   const notes = getNotes();
+  var note = null;
   const filtered = notes.filter(note => note.title === title);
-  if (filtered.length === 1) {
-    console.log(`body : ${filtered[0].body}`);
-  } else {
-    console.log("note does not exist");
+  if (filtered.length === 1){
+    note = filtered[0];
   }
+  return note;
 };
+
+const updateNote = (title , body) => {
+  const notes = getNotes();
+  const note = notes.find(note => note.title === title);
+  if (note) {
+    note.body = body;
+    saveNotes(notes);
+    return true;
+  }
+
+  return false;
+}
 
 const removeNote = title => {
   const notes = getNotes();
@@ -56,9 +69,10 @@ const removeNote = title => {
   if (index !== -1) {
     notes.splice(index, 1);
     saveNotes(notes);
-  } else {
-    console.log("note does not exist");
-  } 
+    return true;
+  }
+  
+  return false;
 };
 
 const getAllNotes = () => {
@@ -72,5 +86,6 @@ module.exports = {
   addNote,
   getAllNotes,
   getNote,
-  removeNote
+  removeNote,
+  updateNote
 };
