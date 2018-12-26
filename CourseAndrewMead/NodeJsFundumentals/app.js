@@ -54,7 +54,10 @@ const writeUsage = () => {
       break;
 
     case "list":
-      notes.getAllNotes();
+      notes.getAllNotes().forEach(note => {
+        console.log(`title : ${note.title} , body : ${note.body}`);
+      });
+    
       break;
 
     default:
