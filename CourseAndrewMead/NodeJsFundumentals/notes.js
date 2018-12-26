@@ -77,9 +77,10 @@ const removeNote = title => {
 
 const getAllNotes = () => {
   const notes = getNotes();
-  for (note in notes) {
-    console.log(`title : ${notes[note].title} , body : ${notes[note].body}`);
-  }
+
+  notes.forEach(note => {
+    console.log(`title : ${note.title} , body : ${note.body}`);
+  });
 };
 
 module.exports = {
