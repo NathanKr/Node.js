@@ -10,5 +10,8 @@ const async_add = (a, b) => {
   });
 };
 
-async_add(2,3).then(result => console.log(result)).catch(err => console.log(err));
-async_add("a",3).then(result => console.log(result)).catch(err => console.log(err));
+a1 = async_add(2,3);
+a2 = async_add("a",3);
+a1.then(result => console.log(result)).catch(err => console.log(err));
+a2.then(result => console.log(result)).catch(err => console.log(err));
+
