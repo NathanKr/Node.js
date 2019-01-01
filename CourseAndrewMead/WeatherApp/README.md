@@ -8,6 +8,7 @@ This is wether app implemented by me
 <li>Weather is provided by darksky</li>
 <li>API KEY is reqiured for geolocation and weather and is in app_dev.js which is private</li>
 <li>The user input the location from the command line</li>
+<li>It is possible to chain promises of geolocation and weather but i did not do it here (https://www.udemy.com/the-complete-nodejs-developer-course-2/learn/v4/t/lecture/5525308?start=1048)</li>
 </ul>
 
 
@@ -17,9 +18,9 @@ This is wether app implemented by me
 <li>axios </li>
 </ul>
 
-
 <h2>Future</h2>
 <ul>
-<li>insert geo and weather code into geo.js , weather.js respectively</li>
-<li>replace mapquestapi because he does not fail even when location is xxx</li>
+<li>handle more yargs features like description , required and so on</li>
 </ul>
+
+
