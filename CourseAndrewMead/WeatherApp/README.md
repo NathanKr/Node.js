@@ -19,8 +19,3 @@ This is wether app implemented by me
 </ul>
 
 <h2>Future</h2>
-<ul>
-<li>handle more yargs features like description , required and so on</li>
-</ul>
-
-

@@ -5,8 +5,12 @@ const axios = require("axios");
 const argv = require("yargs").argv;
 
 const dev = require("./app_dev");
-const LOCATION = argv.location; // ---- e.g. "1600 Pennsylvania Ave NW, Washington, DC 20500, USA";
+let LOCATION = argv.location; // ---- e.g. "1600 Pennsylvania Ave NW, Washington, DC 20500, USA";
 
+if (!LOCATION) {
+  LOCATION = "1600 Pennsylvania Ave NW, Washington, DC 20500, USA";
+  console.log("white house address is used as default");
+}
 
 const geo_url = `http://www.mapquestapi.com/geocoding/v1/address?key=${
   dev.mapquestapi_key
