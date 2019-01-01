@@ -11,7 +11,7 @@ const async_add = (a, b) => {
   });
 };
 
-a1 = async_add(2, 3);
-a2 = async_add("a", 3);
-a1.then(result => console.log(result)).catch(err => console.log(err));
-a2.then(result => console.log(result)).catch(err => console.log(err));
+promise1 = async_add(2, 3);
+promise2 = async_add("a", 3);
+promise1.then(result => console.log(result)).catch(err => console.log(err));
+promise2.then(result => console.log(result)).catch(err => console.log(err));
