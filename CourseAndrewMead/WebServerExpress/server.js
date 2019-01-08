@@ -2,6 +2,9 @@ console.log("app is loading");
 const fs = require("fs");
 const express = require("express");
 const fileName = "server.log";
+const process = require("process");
+
+const port = process.env.PORT || 3000;
 
 // --- create an app
 const app = express();
@@ -39,5 +42,6 @@ app.get("/about", (req, res) => {
 // --- mount middleware to serve static files e.g. html\image inside public directory
 app.use(express.static(__dirname + "/public"));
 
+console.log(`port is : ${port}`);
 // --- listen for requests on this port
-app.listen(3000);
+app.listen(port);
