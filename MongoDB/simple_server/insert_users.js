@@ -8,6 +8,7 @@ const insertUserHandler = (err, res) => {
   if (err) throw err;
 
   console.log("insert is success");
+  console.log(`_id time stamp from _id : ${res.ops[0]._id.getTimestamp()}`);
 };
 
 const connectHandler = (err, db) => {
