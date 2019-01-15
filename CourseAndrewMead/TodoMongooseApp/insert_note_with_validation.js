@@ -6,11 +6,14 @@ const dev = require("./dev");
 const constants = require("./constants");
 
 const noteSchema = new Schema(
-  { text: String, completed: Boolean },
+  {
+    text: { type: String, trim: true, minlength: 1 },
+    completed: { type: Boolean, required: true }
+  },
   { collection: constants.notesCollection }
 );
 const Note = mongoose.model("Note", noteSchema);
-const newNote = new Note({ text: "note1", completed: true });
+const newNote = new Note({ text: " noteTrimed ", completed: true });
 
 newNote
   .save()
