@@ -2,17 +2,20 @@ console.log("app is loading");
 
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const dev = require("./dev");
-const constants = require("./constants");
+const dev = require("../dev");
+const constants = require("../constants");
 
 const noteSchema = new Schema(
-  { text: String, completed: Boolean },
+  {
+    text: { type: String, trim: true, minlength: 1 },
+    completed: { type: Boolean, required: true }
+  },
   { collection: constants.notesCollection }
 );
 const Note = mongoose.model("Note", noteSchema);
-const newNote = new Note({ text: "note1", completed: true });
+const newNote = new Note({ text: " noteTrimed ", completed: true });
 
-newNote
+newNote 
   .save()
   .then(() => console.log("note was saved successfully"))
   .catch(() => console.log("error : note was not saved"));

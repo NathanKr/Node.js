@@ -2,18 +2,15 @@ console.log("app is loading");
 
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const dev = require("./dev");
-const constants = require("./constants");
+const dev = require("../dev");
+const constants = require("../constants");
 
 const noteSchema = new Schema(
-  {
-    text: { type: String, trim: true, minlength: 1 },
-    completed: { type: Boolean, required: true }
-  },
+  { text: String, completed: Boolean },
   { collection: constants.notesCollection }
 );
 const Note = mongoose.model("Note", noteSchema);
-const newNote = new Note({ text: " noteTrimed ", completed: true });
+const newNote = new Note({ text: "note1", completed: true });
 
 newNote
   .save()
