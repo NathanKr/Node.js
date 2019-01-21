@@ -1,7 +1,6 @@
 console.log("app is loading");
 
-
-const mongoose = require("./db/mongoose");// --- this line is a MUST
+const mongoose = require("./db/mongoose"); // --- this line is a MUST
 
 const express = require("express");
 
@@ -18,12 +17,22 @@ const app = express();
 // used for json inside body ?
 app.use(bodyParser.json());
 
+app.get("/notes", (req, res) => {
+  
+  Note
+    .find({})
+    .then(docs => console.log(docs))
+    .catch(err => console.log(err));
+
+  res.sendStatus(200);
+});
+
 app.post("/notes", (req, res) => {
   const { text, completed } = req.body;
   const newNote = new Note({ text, completed });
   newNote
     .save()
-    // --- send the object back including mongoDB object id 
+    // --- send the object back including mongoDB object id
     .then(doc => res.send(doc))
     /*
      --- in most cases its client problem so send 400 (but what if its DB problem?)
