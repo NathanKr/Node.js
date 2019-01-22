@@ -18,13 +18,9 @@ const app = express();
 app.use(bodyParser.json());
 
 app.get("/notes", (req, res) => {
-  
-  Note
-    .find({})
-    .then(docs => console.log(docs))
-    .catch(err => console.log(err));
-
-  res.sendStatus(200);
+  Note.find({})
+    .then(notes => res.send({ notes })) // --- client get object which is more readable
+    .catch(err => res.status(400).send(err));
 });
 
 app.post("/notes", (req, res) => {
