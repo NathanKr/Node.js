@@ -17,15 +17,36 @@ const app = express();
 // used for json inside body ?
 app.use(bodyParser.json());
 
+
+
+// --- DELETE /notes/5c459ecd9d804918d8c3a363
+app.delete("/notes/:id", (req, res) => {
+  const id = req.params.id;
+  if (!ObjectID.isValid(id)) { // --- id not valid
+    res.sendStatus(404);
+  } else {
+    Note.findOneAndDelete({"_id" : id})
+      .then(note => {
+        if (!note) { // --- id not found
+          res.sendStatus(404);
+        } else {
+          res.send({ note  });
+        }
+      }) 
+      .catch(err => res.status(400).send(err)); // --- return not dound
+  }
+});
+
+
 // --- GET /notes/5c3dace372de8b3b9c863c93
 app.get("/notes/:id", (req, res) => {
   const id = req.params.id;
-  if (!ObjectID.isValid(id)) {
+  if (!ObjectID.isValid(id)) { // --- id not valid
     res.sendStatus(404);
   } else {
     Note.findById(id)
       .then(note => {
-        if (!note) {
+        if (!note) {// --- id not found
           res.sendStatus(404);
         } else {
           res.send({ note });
