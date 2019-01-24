@@ -1,7 +1,6 @@
 console.log("app is loading");
 
 const mongoose = require("./db/mongoose"); // --- this line is a MUST
-
 const express = require("express");
 
 // --- used to get isolated body under
@@ -20,15 +19,22 @@ app.use(bodyParser.json());
 // --- GET /notes/5c3dace372de8b3b9c863c93
 app.get("/notes/:id", (req, res) => {
   Note.findById(req.params.id)
-    .then(note => res.send(note))
-    .catch(err => res.status(400).send(err));
+    .then(note => {
+      if(!note){
+        res.sendStatus(404)
+      }
+      else{
+        res.send({ note });
+      }
+    }) // --- client get object which is more readable
+    .catch(err => res.status(400).send(err)); // --- return not dound
 });
 
 // --- GET /notes
 app.get("/notes", (req, res) => {
   Note.find({})
     .then(notes => res.send({ notes })) // --- client get object which is more readable
-    .catch(err => res.status(400).send(err));
+    .catch(err => res.status(404).send(err)); // --- return not dound
 });
 
 // --- POST /notes
