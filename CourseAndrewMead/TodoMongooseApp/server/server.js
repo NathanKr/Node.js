@@ -2,6 +2,7 @@ console.log("app is loading");
 
 const mongoose = require("./db/mongoose"); // --- this line is a MUST
 const express = require("express");
+const { ObjectID } = require("mongodb");
 
 // --- used to get isolated body under
 const bodyParser = require("body-parser");
@@ -9,7 +10,7 @@ const bodyParser = require("body-parser");
 const { User } = require("./db/models/user"); // --- model of user
 const { Note } = require("./db/models/note"); // --- model of note
 
-const port = 3000;
+const port = process.env.PORT || 3000 ;
 
 const app = express();
 
@@ -18,16 +19,20 @@ app.use(bodyParser.json());
 
 // --- GET /notes/5c3dace372de8b3b9c863c93
 app.get("/notes/:id", (req, res) => {
-  Note.findById(req.params.id)
-    .then(note => {
-      if(!note){
-        res.sendStatus(404)
-      }
-      else{
-        res.send({ note });
-      }
-    }) // --- client get object which is more readable
-    .catch(err => res.status(400).send(err)); // --- return not dound
+  const id = req.params.id;
+  if (!ObjectID.isValid(id)) {
+    res.sendStatus(404);
+  } else {
+    Note.findById(id)
+      .then(note => {
+        if (!note) {
+          res.sendStatus(404);
+        } else {
+          res.send({ note });
+        }
+      }) // --- client get object which is more readable
+      .catch(err => res.status(400).send(err)); // --- return not dound
+  }
 });
 
 // --- GET /notes
