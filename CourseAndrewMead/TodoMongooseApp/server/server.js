@@ -10,43 +10,65 @@ const bodyParser = require("body-parser");
 const { User } = require("./db/models/user"); // --- model of user
 const { Note } = require("./db/models/note"); // --- model of note
 
-const port = process.env.PORT || 3000 ;
+const port = process.env.PORT || 3000;
 
 const app = express();
 
 // used for json inside body ?
 app.use(bodyParser.json());
 
-
-
-// --- DELETE /notes/5c459ecd9d804918d8c3a363
-app.delete("/notes/:id", (req, res) => {
+// --- PATCH /notes/5c459ecd9d804918d8c3a363
+app.patch("/notes/:id", (req, res) => {
   const id = req.params.id;
-  if (!ObjectID.isValid(id)) { // --- id not valid
+  if (!ObjectID.isValid(id)) {
+    // --- id not valid
     res.sendStatus(404);
   } else {
-    Note.findOneAndDelete({"_id" : id})
-      .then(note => {
-        if (!note) { // --- id not found
+    const updatedNote = req.body;
+    Note.findOneAndUpdate({ _id: id }, { $set: updatedNote })
+      .then(origNote => {
+        if (!origNote) {
+          // --- id not found
           res.sendStatus(404);
         } else {
-          res.send({ note  });
+          res.send({ origNote });
         }
-      }) 
+      })
       .catch(err => res.status(400).send(err)); // --- return not dound
   }
 });
 
+// --- DELETE /notes/5c459ecd9d804918d8c3a363
+app.delete("/notes/:id", (req, res) => {
+  const id = req.params.id;
+  if (!ObjectID.isValid(id)) {
+    // --- id not valid
+    res.sendStatus(404);
+  } else {
+    Note.findOneAndDelete({ _id: id })
+      .then(note => {
+        if (!note) {
+          // --- id not found
+          res.sendStatus(404);
+        } else {
+          res.send({ note });
+        }
+      })
+      .catch(err => res.status(400).send(err)); // --- return not dound
+  }
+});
 
 // --- GET /notes/5c3dace372de8b3b9c863c93
 app.get("/notes/:id", (req, res) => {
   const id = req.params.id;
-  if (!ObjectID.isValid(id)) { // --- id not valid
+  if (!ObjectID.isValid(id)) {
+    // --- id not valid
     res.sendStatus(404);
   } else {
     Note.findById(id)
       .then(note => {
-        if (!note) {// --- id not found
+        if (!note) {
+          // --- id not found
           res.sendStatus(404);
         } else {
           res.send({ note });
