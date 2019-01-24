@@ -10,11 +10,10 @@ const noteSchema = new Schema(
   { collection: constants.notesCollection }
 );
 const Note = mongoose.model("Note", noteSchema);
-const id='5c3dace372de8b3b9c863c93';// --- make sure it exist
 
 Note
-  .find({_id : id}) // --- you can also use FindById
-  .then(note => console.log(note))
+  .find({}) 
+  .then(notes => console.log(notes))
   .catch(err => console.log("err"));
 
 mongoose.connect(

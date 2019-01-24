@@ -10,11 +10,10 @@ const noteSchema = new Schema(
   { collection: constants.notesCollection }
 );
 const Note = mongoose.model("Note", noteSchema);
-const id='5c3dace372de8b3b9c863c93';// --- make sure it exist
+const id = "5c45a62a6c05162d84f5ab26"; // --- invoke first read_all_notes.js to see which id exist 
 
-Note
-  .find({_id : id}) // --- you can also use FindById
-  .then(note => console.log(note))
+Note.findOneAndDelete({"_id" : id})
+  .then(result => console.log(`note is removed : ${result}`))
   .catch(err => console.log("err"));
 
 mongoose.connect(
