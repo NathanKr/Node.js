@@ -15,7 +15,7 @@ const id='5c3dace372de8b3b9c863c93';// --- make sure it exist
 Note
   .find({_id : id})
   .then(note => console.log(note))
-  .catch(err => console.log(err));
+  .catch(err => console.log("err"));
 
 mongoose.connect(
   dev.mongoDbUrl,

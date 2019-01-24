@@ -17,12 +17,21 @@ const app = express();
 // used for json inside body ?
 app.use(bodyParser.json());
 
+// --- GET /notes/5c3dace372de8b3b9c863c93
+app.get("/notes/:id", (req, res) => {
+  Note.findById(req.params.id)
+    .then(note => res.send(note))
+    .catch(err => res.status(400).send(err));
+});
+
+// --- GET /notes
 app.get("/notes", (req, res) => {
   Note.find({})
     .then(notes => res.send({ notes })) // --- client get object which is more readable
     .catch(err => res.status(400).send(err));
 });
 
+// --- POST /notes
 app.post("/notes", (req, res) => {
   const { text, completed } = req.body;
   const newNote = new Note({ text, completed });
