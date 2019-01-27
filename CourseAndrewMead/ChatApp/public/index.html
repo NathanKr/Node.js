@@ -8,10 +8,12 @@
    <script src="/socket.io/socket.io.js"></script>
    <script>
        var socket = io();   
-       socket.on('connect' , () => console.log('client connected to server'));
+       socket.on('connect' , () => {
+           console.log('client connected to server');
+           socket.emit('createEmail',{ from: "jj@gmail.com",subject: "subject 2"});
+        });
        socket.on('disconnect' , () => console.log('socket disconnected'));
        socket.on('newEmail', data => console.log("got newEmail event from server : ",data));
-       socket.emit('createEmail',{ from: "natankrasney@gmail.com",subject: "subject 2"});
    </script>
 </body>
 </html>
