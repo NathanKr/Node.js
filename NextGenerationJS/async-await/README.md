@@ -1,5 +1,10 @@
 <h2>Introduction</h2>
-async problem and solution via async\await
+<ul>
+<li>async problem and solution via async\await</li>
+<li>the user is asked to input num1 followed by the asking the user to input num2 , once this is done they are added and written to the console</li>
+<li>The user input is accessed by means of callback</li>
+<ul>
+
 
 <h2>Problem</h2>
 node async_problem.js
