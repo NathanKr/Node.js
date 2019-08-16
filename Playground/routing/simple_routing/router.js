@@ -32,6 +32,14 @@ const requestHandler = (request, response) => {
         htmlFile = 'login.html';
         break;
 
+        case '/logout' :
+            htmlFile = 'logout.html';
+        break;
+
+        case '/about' :
+            htmlFile = 'about.html';
+        break;
+
         default:
         htmlFile = 'RouteNotFound.html';
         break;
