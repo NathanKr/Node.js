@@ -12,11 +12,11 @@ const requestHandler = (req, res) => {
     if (err) {
         res.writeHead(404,{ "Content-Type": "text/html" });
         res.write('<h2 style="color:red;">Resource was not found</h2>');
-        res.end;
+        res.end();
     } else {
       res.writeHead(200, { "Content-Type": "text/html" });
       res.write(data);
-      res.end;
+      res.end();
     }
   });
 };
