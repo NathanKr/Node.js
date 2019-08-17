@@ -28,12 +28,8 @@ const requestHandler = (request, response) => {
         htmlFile = 'index.html';
         break;
 
-        case '/login' :
-        htmlFile = 'login.html';
-        break;
-
-        case '/logout' :
-            htmlFile = 'logout.html';
+        case '/support' :
+            htmlFile = 'support.html';
         break;
 
         case '/about' :
