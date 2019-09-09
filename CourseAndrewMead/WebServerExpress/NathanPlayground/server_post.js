@@ -13,10 +13,8 @@ const app = express();
 
 
 // --- used to get isolated body under
-const bodyParser = require("body-parser");
-
-// used for json inside body ?
-app.use(bodyParser.json());
+// used for json inside body 
+app.use(express.json());
 
 app.post("/xyz", (req, res) => {
   console.log("recived post body", req.body);
