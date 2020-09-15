@@ -1,11 +1,11 @@
 const events = require('events');
 const eventEmitter = new events.EventEmitter();
-const event1 = "event 1";
+const eventName = "event 1";
 
 const eventHandler = function () {
-  console.log(`i am handling ${event1}`);
+  console.log(`i am handling ${eventName}`);
 }
 
-eventEmitter.on(event1, eventHandler);
+eventEmitter.on(eventName, eventHandler);
 
-eventEmitter.emit(event1);
+eventEmitter.emit(eventName);
