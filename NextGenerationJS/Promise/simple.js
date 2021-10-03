@@ -1,6 +1,7 @@
 /*
     promise are used for async operation
     here the operation is sync but it is easier to understand
+    you can easily make it async by calling resolve and reject from setTimeout
 */
 
 const promise_success = new Promise((resolve, reject) => {
